@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Case Feedback</title>
+  <style>
+    .star {
+      font-size: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Rate Your Experience</h2>
+
+  <div id="stars">
+    <span class="star" onclick="selectStar(1)">⭐</span>
+    <span class="star" onclick="selectStar(2)">⭐</span>
+    <span class="star" onclick="selectStar(3)">⭐</span>
+    <span class="star" onclick="selectStar(4)">⭐</span>
+    <span class="star" onclick="selectStar(5)">⭐</span>
+  </div>
+
+  <h3 id="emoji"></h3>
+
+  <button onclick="submitFeedback()">Submit</button>
+
+<script>
+let rating = 0;
+let caseId = new URLSearchParams(window.location.search).get("caseId");
+
+function selectStar(value) {
+  rating = value;
+  let emojiMap = {
+    1: "😡",
+    2: "😕",
+    3: "😐",
+    4: "😊",
+    5: "😍"
+  };
+  document.getElementById("emoji").innerText = emojiMap[value];
+}
+
+function submitFeedback() {
+  alert("Feedback submitted for Case: " + caseId +
+        " Rating: " + rating);
+}
+</script>
+
+</body>
+</html>
